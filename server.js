@@ -42,9 +42,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 // 处理entid
-app.use(entloader);
+//app.use(entloader);
 // 处理ip白名单
-app.use(ipvalidate);
+//app.use(ipvalidate);
 // paas 相关接口
 app.use('/api', loader(path.join(__dirname, './server/routes/api'), true));
 // 管理平台相关接口
@@ -57,9 +57,9 @@ app.get('/*', function (req, res) {
 });
 
 
-var PORT = process.env.PORT || 8100;
+var PORT = process.env.PORT || 8101;
 app.listen(PORT, function() {
-    console.log('cloudatlas application services running at localhost:' + PORT);
+    console.log('cloudatlas admin running at localhost:' + PORT);
 });
 
 
