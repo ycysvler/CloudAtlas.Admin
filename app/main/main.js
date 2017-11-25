@@ -11,6 +11,7 @@ const SubMenu = Menu.SubMenu;
 import {System} from '../system/system';
 import {HistoryLog} from '../log/history';
 import {ConstantlyLog} from '../log/constantly';
+import {ConstantlyAgent} from '../agent/constantly';
 import {NotFound} from '../notfound';
 
 import './main.less';
@@ -50,6 +51,10 @@ export class Main extends React.Component {
                             <Menu.Item key="constantly"><Link to="/main/log/constantly" >实时日志</Link></Menu.Item>
                             <Menu.Item key="history"><Link to="/main/log/history" >历史日志</Link></Menu.Item>
                         </SubMenu>
+                        <SubMenu title={<span><Icon type="eye-o"/><span>监控中心</span></span>} key="monitor">
+                            <Menu.Item key="agent"><Link to="/main/agent/constantly" >Agent 状态</Link></Menu.Item>
+                            <Menu.Item key="m2">系统监控2</Menu.Item>
+                        </SubMenu>
 
                         <Menu.Item key="config" style={{height: 64, lineHeight: '64px'}}>
                             <Icon type="setting"/>基本配置
@@ -64,10 +69,7 @@ export class Main extends React.Component {
                             <Menu.Item key="s1">统计分析1</Menu.Item>
                             <Menu.Item key="s2">统计分析2</Menu.Item>
                         </SubMenu>
-                        <SubMenu title={<span><Icon type="eye-o"/><span>系统监控</span></span>} key="monitor">
-                            <Menu.Item key="m1">系统监控1</Menu.Item>
-                            <Menu.Item key="m2">系统监控2</Menu.Item>
-                        </SubMenu>
+
                     </Menu>
                     <Popover placement="bottomRight" trigger="click" content={this.avatarMenu}>
                         <div id="avatar">
@@ -84,6 +86,7 @@ export class Main extends React.Component {
                                 <Route strict path="/main/system" component={System}/>
                                 <Route  path="/main/log/constantly" component={ConstantlyLog}/>
                                 <Route  path="/main/log/history" component={HistoryLog}/>
+                                <Route  path="/main/agent/constantly" component={ConstantlyAgent}/>
 
                                 <Route component={NotFound}/>
                             </Switch>

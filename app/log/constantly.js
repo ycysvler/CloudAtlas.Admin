@@ -2,7 +2,7 @@
  * Created by yanggang on 2017/3/6.
  */
 import React from 'react';
-import {Layout, Table, Badge, Modal, Checkbox, Input,Row,Col} from 'antd';
+import {Layout, Table, Badge, Modal, Checkbox, Input, Row, Col} from 'antd';
 import moment from 'moment';
 import {LogActions, LogStore} from './reflux';
 
@@ -63,7 +63,7 @@ export class ConstantlyLog extends React.Component {
         this.setState({columnConfig: columnConfig});
     }
 
-    onQueryChange=(e)=>{
+    onQueryChange = (e) => {
         var value = e.target.value;
         var id = e.target.id;
 
@@ -81,19 +81,19 @@ export class ConstantlyLog extends React.Component {
                 title: 'level', dataIndex: 'level', key: 'level', width: 90,
                 render: function (text, record, index) {
                     if (record.level === 'DEBUG') {
-                        return <div style={{paddingLeft:8}} ><Badge status="processing"/> <span>{text}</span></div>
+                        return <div style={{paddingLeft: 8}}><Badge status="processing"/> <span>{text}</span></div>
                     }
                     if (record.level === 'INFO') {
-                        return <div style={{paddingLeft:8}}><Badge status="default"/><span>{text}</span></div>
+                        return <div style={{paddingLeft: 8}}><Badge status="default"/><span>{text}</span></div>
                     }
                     if (record.level === 'WARN') {
-                        return <div style={{paddingLeft:8}}><Badge status="warning"/><span>{text}</span></div>
+                        return <div style={{paddingLeft: 8}}><Badge status="warning"/><span>{text}</span></div>
                     }
                     if (record.level === 'ERROR') {
-                        return <div style={{paddingLeft:8}}><Badge status="error"/><span>{text}</span></div>
+                        return <div style={{paddingLeft: 8}}><Badge status="error"/><span>{text}</span></div>
                     }
                     if (record.level === 'FATAL') {
-                        return <div style={{paddingLeft:8}}><Badge status="error"/><span>{text}</span></div>
+                        return <div style={{paddingLeft: 8}}><Badge status="error"/><span>{text}</span></div>
                     }
                 }
             });
@@ -118,7 +118,8 @@ export class ConstantlyLog extends React.Component {
             });
         }
         if (this.state.columnConfig.entid) {
-            columns.push({title: 'entId', dataIndex: 'entid', key: 'entid',
+            columns.push({
+                title: 'entId', dataIndex: 'entid', key: 'entid',
 
                 filteredValue: [this.state.columnFilter.entid],
                 onFilter: (value, record) => record.entid.indexOf(value) > -1,
@@ -126,21 +127,24 @@ export class ConstantlyLog extends React.Component {
         }
 
         if (this.state.columnConfig.intance) {
-            columns.push({title: 'intance', dataIndex: 'intance', key: 'intance',
+            columns.push({
+                title: 'intance', dataIndex: 'intance', key: 'intance',
 
                 filteredValue: [this.state.columnFilter.intance],
                 onFilter: (value, record) => record.intance.indexOf(value) > -1,
             });
         }
         if (this.state.columnConfig.service) {
-            columns.push({title: 'service', dataIndex: 'service', key: 'service',
+            columns.push({
+                title: 'service', dataIndex: 'service', key: 'service',
 
                 filteredValue: [this.state.columnFilter.service],
                 onFilter: (value, record) => record.service.indexOf(value) > -1,
             });
         }
         if (this.state.columnConfig.interface) {
-            columns.push({title: 'interface', dataIndex: 'interface', key: 'interface',
+            columns.push({
+                title: 'interface', dataIndex: 'interface', key: 'interface',
 
                 filteredValue: [this.state.columnFilter.interface],
                 onFilter: (value, record) => record.interface.indexOf(value) > -1,
@@ -156,35 +160,59 @@ export class ConstantlyLog extends React.Component {
                 <Header style={{"background": "#fff", height: 'auto'}}>
                     <div>
                         <Row>
-                            <Col span={3}><span>字段选择：</span></Col>
-                            <Col span={3}><Checkbox value="level" checked={this.state.columnConfig.level}
-                                                    onChange={this.onCheckChange}>level</Checkbox></Col>
-                            <Col span={3}><Checkbox value="time" checked={this.state.columnConfig.time}
-                                                    onChange={this.onCheckChange}>time</Checkbox></Col>
-                            <Col span={3}><Checkbox value="title" checked={this.state.columnConfig.title}
-                                                    onChange={this.onCheckChange}>title</Checkbox></Col>
-                            <Col span={3}><Checkbox  value="entid" checked={this.state.columnConfig.entid}
-                                                     onChange={this.onCheckChange}>entid</Checkbox></Col>
-                            <Col span={3}><Checkbox  value="intance" checked={this.state.columnConfig.intance}
-                                                     onChange={this.onCheckChange}>intance</Checkbox></Col>
-                            <Col span={3}><Checkbox  value="service" checked={this.state.columnConfig.service}
-                                                     onChange={this.onCheckChange}>service</Checkbox></Col>
-                            <Col span={3}><Checkbox  value="interface" checked={this.state.columnConfig.interface}
-                                                     onChange={this.onCheckChange}>interface</Checkbox></Col>
+                            <Col span={2}><span>字段选择：</span></Col>
+                            <Col span={22}><Checkbox value="level" checked={this.state.columnConfig.level}
+                                                     onChange={this.onCheckChange}>level</Checkbox>
+                                <Checkbox value="time" checked={this.state.columnConfig.time}
+                                          onChange={this.onCheckChange}>time</Checkbox>
+                                <Checkbox value="title" checked={this.state.columnConfig.title}
+                                          onChange={this.onCheckChange}>title</Checkbox>
+                                <Checkbox value="entid" checked={this.state.columnConfig.entid}
+                                          onChange={this.onCheckChange}>entid</Checkbox>
+                                <Checkbox value="intance" checked={this.state.columnConfig.intance}
+                                          onChange={this.onCheckChange}>intance</Checkbox>
+                                <Checkbox value="service" checked={this.state.columnConfig.service}
+                                          onChange={this.onCheckChange}>service</Checkbox>
+                                <Checkbox value="interface" checked={this.state.columnConfig.interface}
+                                          onChange={this.onCheckChange}>interface</Checkbox></Col>
                         </Row>
                         <div>
                             <div className="gutter-example">
                                 <Row gutter={16}>
-                                    <Col span={1}><div >Time:</div></Col><Col span={7}><Input id="time" onChange={this.onQueryChange} value={this.state.columnFilter.time} placeholder="输入Time的关键字"/></Col>
-                                    <Col span={1}><div >Title:</div></Col><Col span={7}><Input id="title" onChange={this.onQueryChange} value={this.state.columnFilter.title} placeholder="输入Title的关键字"/></Col>
-                                    <Col span={1}><div >Entid:</div></Col><Col span={7}><Input id="entid" onChange={this.onQueryChange} value={this.state.columnFilter.entid} placeholder="输入Entid的关键字"/></Col>
+                                    <Col span={2}>
+                                        <div >Time:</div>
+                                    </Col><Col span={6}><Input id="time" onChange={this.onQueryChange}
+                                                               value={this.state.columnFilter.time}
+                                                               placeholder="输入Time的关键字"/></Col>
+                                    <Col span={2}>
+                                        <div >Title:</div>
+                                    </Col><Col span={6}><Input id="title" onChange={this.onQueryChange}
+                                                               value={this.state.columnFilter.title}
+                                                               placeholder="输入Title的关键字"/></Col>
+                                    <Col span={2}>
+                                        <div >Entid:</div>
+                                    </Col><Col span={6}><Input id="entid" onChange={this.onQueryChange}
+                                                               value={this.state.columnFilter.entid}
+                                                               placeholder="输入Entid的关键字"/></Col>
                                 </Row>
                             </div>
                             <div className="gutter-example">
                                 <Row gutter={16}>
-                                    <Col span={1}><div >Intance:</div></Col><Col span={7}><Input id="intance" onChange={this.onQueryChange} value={this.state.columnFilter.intance} placeholder="输入Intance的关键字"/></Col>
-                                    <Col span={1}><div >Service:</div></Col><Col span={7}><Input id="service" onChange={this.onQueryChange} value={this.state.columnFilter.service} placeholder="输入Service的关键字"/></Col>
-                                    <Col span={1}><div >Interface:</div></Col><Col span={7}><Input id="interface" onChange={this.onQueryChange} value={this.state.columnFilter.interface} placeholder="输入Interface的关键字"/> </Col>
+                                    <Col span={2}>
+                                        <div >Intance:</div>
+                                    </Col><Col span={6}><Input id="intance" onChange={this.onQueryChange}
+                                                               value={this.state.columnFilter.intance}
+                                                               placeholder="输入Intance的关键字"/></Col>
+                                    <Col span={2}>
+                                        <div >Service:</div>
+                                    </Col><Col span={6}><Input id="service" onChange={this.onQueryChange}
+                                                               value={this.state.columnFilter.service}
+                                                               placeholder="输入Service的关键字"/></Col>
+                                    <Col span={2}>
+                                        <div >Interface:</div>
+                                    </Col><Col span={6}><Input id="interface" onChange={this.onQueryChange}
+                                                               value={this.state.columnFilter.interface}
+                                                               placeholder="输入Interface的关键字"/> </Col>
                                 </Row>
                             </div>
                         </div>
@@ -195,7 +223,7 @@ export class ConstantlyLog extends React.Component {
                 <Layout className="monitor" style={{padding: '16px'}}>
 
                     <Content style={{"background": "#fff"}}>
-                        <Table pagination={false} rowKey="time"
+                        <Table pagination={false} rowKey="index"
                                onRowClick={this.onRowClick}
                                bordered={true}
                                dataSource={this.state.logs} columns={this.getColumn()}/>
@@ -238,8 +266,6 @@ export class ConstantlyLog extends React.Component {
                         </table>
                     </Modal>
                 </Layout>
-
-
             </Layout>
         );
     }
