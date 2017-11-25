@@ -43,7 +43,6 @@ export class Main extends React.Component {
     </div>)
 
     render() {
-        console.log(this.props);
         return (<Layout className="main">
                 <Header className="header">
                     <Menu mode="horizontal" style={{borderBottom: 'none'}} onClick={this.handleClick}>

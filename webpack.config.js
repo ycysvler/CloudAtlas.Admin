@@ -25,7 +25,7 @@ module.exports = {
     plugins: function () {
         var options = [
             new HtmlWebpackPlugin({
-                title: '云图',
+                title: '云图 - 超管平台',
                 hash: true,
                 inject: false,
                 filename: 'index.html',
