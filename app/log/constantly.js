@@ -98,15 +98,13 @@ export class ConstantlyLog extends React.Component {
                 }
             });
         }
-        if (this.state.columnConfig.time) {
-            columns.push({
-                title: 'time', dataIndex: 'time', key: 'time', width: 140,
 
-                filteredValue: [this.state.columnFilter.time],
-                onFilter: (value, record) => record.time.indexOf(value) > -1,
-                render: function (text, record, index) {
-                    return <div>{new moment(record.time).format('YYYY-MM-DD HH:mm:ss')}</div>
-                }
+        if (this.state.columnConfig.service) {
+            columns.push({
+                title: 'service', dataIndex: 'service', key: 'service',
+
+                filteredValue: [this.state.columnFilter.service],
+                onFilter: (value, record) => record.service.indexOf(value) > -1,
             });
         }
         if (this.state.columnConfig.title) {
@@ -117,6 +115,15 @@ export class ConstantlyLog extends React.Component {
                 onFilter: (value, record) => record.title.indexOf(value) > -1,
             });
         }
+        if (this.state.columnConfig.interface) {
+            columns.push({
+                title: 'interface', dataIndex: 'interface', key: 'interface',
+
+                filteredValue: [this.state.columnFilter.interface],
+                onFilter: (value, record) => record.interface.indexOf(value) > -1,
+            });
+        }
+
         if (this.state.columnConfig.entid) {
             columns.push({
                 title: 'entId', dataIndex: 'entid', key: 'entid',
@@ -134,20 +141,16 @@ export class ConstantlyLog extends React.Component {
                 onFilter: (value, record) => record.intance.indexOf(value) > -1,
             });
         }
-        if (this.state.columnConfig.service) {
-            columns.push({
-                title: 'service', dataIndex: 'service', key: 'service',
 
-                filteredValue: [this.state.columnFilter.service],
-                onFilter: (value, record) => record.service.indexOf(value) > -1,
-            });
-        }
-        if (this.state.columnConfig.interface) {
+        if (this.state.columnConfig.time) {
             columns.push({
-                title: 'interface', dataIndex: 'interface', key: 'interface',
+                title: 'time', dataIndex: 'time', key: 'time', width: 140,
 
-                filteredValue: [this.state.columnFilter.interface],
-                onFilter: (value, record) => record.interface.indexOf(value) > -1,
+                filteredValue: [this.state.columnFilter.time],
+                onFilter: (value, record) => record.time.indexOf(value) > -1,
+                render: function (text, record, index) {
+                    return <div>{new moment(record.time).format('YYYY-MM-DD HH:mm:ss')}</div>
+                }
             });
         }
 
@@ -163,18 +166,19 @@ export class ConstantlyLog extends React.Component {
                             <Col span={2}><span>字段选择：</span></Col>
                             <Col span={22}><Checkbox value="level" checked={this.state.columnConfig.level}
                                                      onChange={this.onCheckChange}>level</Checkbox>
-                                <Checkbox value="time" checked={this.state.columnConfig.time}
-                                          onChange={this.onCheckChange}>time</Checkbox>
+                                <Checkbox value="service" checked={this.state.columnConfig.service}
+                                          onChange={this.onCheckChange}>service</Checkbox>
                                 <Checkbox value="title" checked={this.state.columnConfig.title}
                                           onChange={this.onCheckChange}>title</Checkbox>
+                                <Checkbox value="interface" checked={this.state.columnConfig.interface}
+                                          onChange={this.onCheckChange}>interface</Checkbox>
                                 <Checkbox value="entid" checked={this.state.columnConfig.entid}
                                           onChange={this.onCheckChange}>entid</Checkbox>
                                 <Checkbox value="intance" checked={this.state.columnConfig.intance}
                                           onChange={this.onCheckChange}>intance</Checkbox>
-                                <Checkbox value="service" checked={this.state.columnConfig.service}
-                                          onChange={this.onCheckChange}>service</Checkbox>
-                                <Checkbox value="interface" checked={this.state.columnConfig.interface}
-                                          onChange={this.onCheckChange}>interface</Checkbox></Col>
+                                <Checkbox value="time" checked={this.state.columnConfig.time}
+                                          onChange={this.onCheckChange}>time</Checkbox>
+                            </Col>
                         </Row>
                         <div>
                             <div className="gutter-example">
