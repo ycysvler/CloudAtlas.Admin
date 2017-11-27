@@ -24,7 +24,9 @@ module.exports = class Schemas{
             deep_feature:Buffer,                    //  深度学习特征
             extend:String,                          //  扩展字段，放个大字符串
             createtime:Date                         //  创建时间
-        }); 
+        });
+
+        this.imageIndexSchema.index({ type: 1, state: 1 });
 
         this.Image = conn.model('Image', this.imageSchema);
 

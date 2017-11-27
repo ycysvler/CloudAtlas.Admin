@@ -79,7 +79,7 @@ export class ConstantlyAgent extends React.Component {
                 {
                     this.state.agents.map((agent, index) => {
                         return <Card key={agent._id}
-                                     title={<div><Badge status="success"/> &nbsp;{agent.ip}&nbsp; / &nbsp;[{agent.agentid}]</div>}
+                                     title={<div><Badge status="success"/> &nbsp;{agent.ip}&nbsp; / &nbsp;{agent.agentid}</div>}
                                      extra={<a href="#">More</a>}>
                                 {
                                     agent.instances.map((instance, index)=>{
