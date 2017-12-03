@@ -10,6 +10,7 @@ const SubMenu = Menu.SubMenu;
 
 import {System} from '../system/system';
 import {HistoryLog} from '../log/history';
+import {Job} from '../job/job';
 import {ConstantlyLog} from '../log/constantly';
 import {ConstantlyAgent} from '../agent/constantly';
 import {NotFound} from '../notfound';
@@ -47,6 +48,11 @@ export class Main extends React.Component {
         return (<Layout className="main">
                 <Header className="header">
                     <Menu mode="horizontal" style={{borderBottom: 'none'}} onClick={this.handleClick}>
+                        <SubMenu key="job" title={<span><Icon type="appstore-o"/><span>搜索任务</span></span>} >
+                            <Menu.Item key="redis"><Link to="/main/job/redis" >任务查询</Link></Menu.Item>
+
+                        </SubMenu>
+
                         <SubMenu key="log" title={<span><Icon type="appstore-o"/><span>日志中心</span></span>} >
                             <Menu.Item key="constantly"><Link to="/main/log/constantly" >实时日志</Link></Menu.Item>
                             <Menu.Item key="history"><Link to="/main/log/history" >历史日志</Link></Menu.Item>
@@ -87,6 +93,8 @@ export class Main extends React.Component {
                                 <Route  path="/main/log/constantly" component={ConstantlyLog}/>
                                 <Route  path="/main/log/history" component={HistoryLog}/>
                                 <Route  path="/main/agent/constantly" component={ConstantlyAgent}/>
+                                <Route  path="/main/job/redis" component={Job}/>
+
 
                                 <Route component={NotFound}/>
                             </Switch>
