@@ -52,7 +52,6 @@ export class Main extends React.Component {
                             <Menu.Item key="redis"><Link to="/main/job/redis" >任务查询</Link></Menu.Item>
 
                         </SubMenu>
-
                         <SubMenu key="log" title={<span><Icon type="appstore-o"/><span>日志中心</span></span>} >
                             <Menu.Item key="constantly"><Link to="/main/log/constantly" >实时日志</Link></Menu.Item>
                             <Menu.Item key="history"><Link to="/main/log/history" >历史日志</Link></Menu.Item>
@@ -61,7 +60,6 @@ export class Main extends React.Component {
                             <Menu.Item key="agent"><Link to="/main/agent/constantly" >Agent 状态</Link></Menu.Item>
                             <Menu.Item key="m2">系统监控2</Menu.Item>
                         </SubMenu>
-
                         <Menu.Item key="config" style={{height: 64, lineHeight: '64px'}}>
                             <Icon type="setting"/>基本配置
                         </Menu.Item>
@@ -75,7 +73,6 @@ export class Main extends React.Component {
                             <Menu.Item key="s1">统计分析1</Menu.Item>
                             <Menu.Item key="s2">统计分析2</Menu.Item>
                         </SubMenu>
-
                     </Menu>
                     <Popover placement="bottomRight" trigger="click" content={this.avatarMenu}>
                         <div id="avatar">
@@ -84,8 +81,6 @@ export class Main extends React.Component {
                         </div>
                     </Popover>
                 </Header>
-
-
                     <Layout >
                         <Router>
                             <Switch>
@@ -94,8 +89,6 @@ export class Main extends React.Component {
                                 <Route  path="/main/log/history" component={HistoryLog}/>
                                 <Route  path="/main/agent/constantly" component={ConstantlyAgent}/>
                                 <Route  path="/main/job/redis" component={Job}/>
-
-
                                 <Route component={NotFound}/>
                             </Switch>
                         </Router>
