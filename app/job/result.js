@@ -111,14 +111,12 @@ export class JobResult extends React.Component {
                             </Collapse>
                         </Sider>
                         <Content>
-
                             {
                                 this.state.results.map(function(item,index){
                                     return <Card key={item._id} title={item.score} style={{ width: 170,float:'left', margin:'0 0 4px 4px' }}> <img className="img"
                                                  src={Config.url + "/api/enterprises/" + self.state.entid + "/images/" + item.image}/></Card>
                                 })
                             }
-
                         </Content>
                     </Layout>
                 </Content>
