@@ -18,6 +18,8 @@ import {NotFound} from '../notfound';
 import './main.less';
 
 export class Main extends React.Component {
+
+
     constructor(props) {
         super(props);
     }
