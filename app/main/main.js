@@ -35,7 +35,7 @@ export class Main extends React.Component {
         <div className="info">
             <div className="left">
                 <Avatar size="large" style={{height:80,width:80,borderRadius:40,margin:'8px 24px 8px 8px'}}
-                        src="http://g.hiphotos.baidu.com/image/pic/item/5bafa40f4bfbfbed956ea89572f0f736afc31f20.jpg"/>
+                        src="http://huyaimg.dwstatic.com/avatar/1013/a7/ab3ed96f348eaf2b1537411c56f512_180_135.jpg?412550"/>
             </div>
             <div className="right">
                 <div>管理员</div>
@@ -79,7 +79,7 @@ export class Main extends React.Component {
                     <Popover placement="bottomRight" trigger="click" content={this.avatarMenu}>
                         <div id="avatar">
                             <Avatar size="large"
-                                    src="http://g.hiphotos.baidu.com/image/pic/item/5bafa40f4bfbfbed956ea89572f0f736afc31f20.jpg"/>
+                                    src="http://huyaimg.dwstatic.com/avatar/1013/a7/ab3ed96f348eaf2b1537411c56f512_180_135.jpg?412550"/>
                         </div>
                     </Popover>
                 </Header>

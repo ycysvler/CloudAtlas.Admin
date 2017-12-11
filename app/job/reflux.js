@@ -51,11 +51,8 @@ const JobStore = Reflux.createStore({
         });
     },
     onResults:function (entid, jobid, source, imagetype, featuretype) {
-        ///ent/:entid/job/:jobid/:image/:imagetype/:featuretype
         var self = this;
         var url = Config.url + '/mgr/ent/' + entid + '/job/' + jobid + '/' + source + '/' + imagetype + '/' + featuretype;
-
-        console.log('url > ', url);
 
         $.ajax({
             url: url,
@@ -67,7 +64,6 @@ const JobStore = Reflux.createStore({
             data: {},
             success: function (data, status) {
                 self.trigger('results', data);
-                console.log('results > ',data);
             },
             error: function (reason) {
                 console.log('error',reason);

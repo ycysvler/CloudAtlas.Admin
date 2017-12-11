@@ -2,7 +2,7 @@
  * Created by yanggang on 2017/3/6.
  */
 import React from 'react';
-import {Layout, Table, Badge, Modal, Checkbox, Input, Row, Col, Select} from 'antd';
+import {Layout, Table, Button, Modal, Checkbox, Input, Row, Col, Select} from 'antd';
 import moment from 'moment';
 import {JobActions, JobStore} from './reflux';
 import {JobResult} from './result';
@@ -41,19 +41,20 @@ export class Job extends React.Component {
         this.setState({entid:value});
     }
 
-
     getColumn = () => {
         var columns = [];
 
         columns.push({
-            title: 'id', dataIndex: '_id', key: '_id'
+            title: 'id', dataIndex: '_id', key: '_id',width:180
         });
-
         columns.push({
-            title: 'createtime', dataIndex: 'createtime', key: 'createtime',
+            title: 'createtime', dataIndex: 'createtime', key: 'createtime',width:150,
             render: function (text, record, index) {
                 return <div>{new moment(record.createtime).format('YYYY-MM-DD HH:mm:ss')}</div>
             }
+        });
+        columns.push({
+            title: 'name', dataIndex: 'name', key: 'name',width:200
         });
 
         columns.push({
@@ -63,20 +64,20 @@ export class Job extends React.Component {
             }
         });
         columns.push({
-            title: 'imagetypes', dataIndex: 'imagetypes', key: 'imagetypes',
+            title: 'imagetypes', dataIndex: 'imagetypes', key: 'imagetypes',width:180,
             render: function (text, record, index) {
                 return <span>{record.imagetypes.join(' , ')}</span>
             }
         });
         columns.push({
-            title: 'featuretypes', dataIndex: 'featuretypes', key: 'featuretypes',
+            title: 'featuretypes', dataIndex: 'featuretypes', key: 'featuretypes',width:160,
             render: function (text, record, index) {
                 return <span>{record.featuretypes.join(' , ')}</span>
             }
         });
 
         columns.push({
-            title: 'progress', dataIndex: 'progress', key: 'progress',
+            title: 'progress', dataIndex: 'progress', key: 'progress',width:180,
             render: function (text, record, index) {
                 return <span>{record.progress * 100}%</span>
             }
@@ -85,12 +86,15 @@ export class Job extends React.Component {
         return columns;
     }
 
-
+    handleSearch = () =>{
+        JobActions.jobs(this.state.entid);
+    }
 
     render() {
         return (
             <Layout>
-                <Header style={{"background": "#fff", height: 'auto'}}>
+                <Header style={{"background": "#fff", height: 'auto', padding:'0 16px', display:'flex',justifyContent: 'space-between'}}>
+
                     <div>
                         <Select placeholder="Select a enterprese" style={{width: 250}} onChange={this.handleChange}>
                             {
@@ -99,7 +103,7 @@ export class Job extends React.Component {
                                                           value={item.entid}>{item.entname}</Select.Option>
                                 })
                             }
-                        </Select>
+                        </Select><Button style={{marginLeft:8}} shape="circle" icon="search" onClick={this.handleSearch} />
                     </div>
 
                 </Header>
@@ -107,7 +111,7 @@ export class Job extends React.Component {
                 <Layout className="monitor" style={{padding: '16px'}}>
 
                     <div style={{"background": "#fff", height: 'auto'}}>
-                        <Table pagination={false} rowKey="_id"
+                        <Table pagination={false} rowKey="_id" scroll={{ x: 1000, y: 300 }}
                                onRowClick={this.onRowClick}
                                bordered={true}
                                dataSource={this.state.jobs} columns={this.getColumn()}/>
